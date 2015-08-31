@@ -29,3 +29,28 @@ Install from github with
 ```r
 devtools::install_github("jjchern/cpsmar1980s")
 ```
+
+Since there're 10 years of data, the package is kind of big (about 64 MB). It might take a while to download.
+
+# Usage
+
+```{r, message=FALSE, warning=FALSE}
+library(cpsmar1980s)
+library(dplyr)
+
+# All the datasets
+ls("package:cpsmar1980s", all = TRUE)
+
+# All variables in cpsmar1993
+names(cpsmar1983)
+
+# Select a few variables
+cpsmar1983 %>% 
+  select(year, statefip, age, sex, race, educ, fullpart) 
+
+# Each variable is a "labelled" vector (from the `haven` package)
+cpsmar1984$sex %>% str
+attr(cpsmar1984$sex, "label") # like Stata's label
+attr(cpsmar1984$sex, "labels") # like Stata's label values
+```
+
